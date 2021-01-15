@@ -1,0 +1,8 @@
+server:
+  servlet.context-path: /employee
+---
+info:
+  app:
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@  
