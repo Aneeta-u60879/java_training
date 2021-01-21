@@ -10,7 +10,7 @@ import com.azure.spring.data.cosmos.repository.ReactiveCosmosRepository;
 import com.training.ust.hospitalmng.model.BookingDetails;
 
 
-@Repository
+//@Repository
 public interface BookingDetailsRepo extends
 		ReactiveCosmosRepository<BookingDetails, String> {
 

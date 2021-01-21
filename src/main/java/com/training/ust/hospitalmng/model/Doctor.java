@@ -7,36 +7,46 @@ import com.azure.spring.data.cosmos.core.mapping.PartitionKey;
 
 import lombok.Data;
 
-
-
-
 @Container(containerName = "doctor")
 @Data
 public class Doctor {
 	@Id
 	private String doctorId;
 	protected String name;
-	
+
 	private String specialisation;
-	
-	
-	
-    private double personalDetails;
-	
+
 	private String address;
-	
-	private String age;
-	
+
+	private double age;
+
 	private String phone;
-	
+
 	private String consultingStartTime;
-	
+
 	private String consultingEndTime;
-	
+
 	private String patients;
-	
+
 	@PartitionKey
-	private double dept;
+	private String dept;
+	
+	public Doctor (){
+		
+	}
+
+	public Doctor(String doctorId, String name, double age, String phone,
+			String consultingStartTime, String consultingEndTime, String patients, String dept) {
+		super();
+		this.doctorId = doctorId;
+		this.name = name;
+		this.age = age;
+		this.phone = phone;
+		this.consultingStartTime = consultingStartTime;
+		this.consultingEndTime = consultingEndTime;
+		this.patients = patients;
+		this.dept = dept;
+	}
 
 	public String getDoctorId() {
 		return doctorId;
@@ -62,21 +72,7 @@ public class Doctor {
 		this.specialisation = specialisation;
 	}
 
-	public double getDept() {
-		return dept;
-	}
-
-	public void setDept(double dept) {
-		this.dept = dept;
-	}
-
-	public double getPersonalDetails() {
-		return personalDetails;
-	}
-
-	public void setPersonalDetails(double personalDetails) {
-		this.personalDetails = personalDetails;
-	}
+	
 
 	public String getAddress() {
 		return address;
@@ -86,12 +82,22 @@ public class Doctor {
 		this.address = address;
 	}
 
-	public String getAge() {
+	
+
+	public double getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(double age) {
 		this.age = age;
+	}
+
+	public String getDept() {
+		return dept;
+	}
+
+	public void setDept(String dept) {
+		this.dept = dept;
 	}
 
 	public String getPhone() {
@@ -125,7 +131,5 @@ public class Doctor {
 	public void setPatients(String patients) {
 		this.patients = patients;
 	}
-
-	
 
 }

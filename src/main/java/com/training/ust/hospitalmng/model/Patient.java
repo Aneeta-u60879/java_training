@@ -17,7 +17,7 @@ public class Patient {
 	
 	private String personalDetails;
 	
-	private double address;
+	private String address;
 	
     private double age;
 	
@@ -27,6 +27,23 @@ public class Patient {
 	
 	private String lastConsultedDateTime;
 
+	
+	public Patient()
+	{
+		
+	}
+	
+	public Patient(String patientId, String name, String personalDetails, double age, String phone,
+			String consultingDoctorId, String lastConsultedDateTime) {
+		super();
+		this.patientId = patientId;
+		this.name = name;
+		this.personalDetails = personalDetails;
+		this.age = age;
+		this.phone = phone;
+		this.consultingDoctorId = consultingDoctorId;
+		this.lastConsultedDateTime = lastConsultedDateTime;
+			}
 	public String getPatientId() {
 		return patientId;
 	}
@@ -51,11 +68,12 @@ public class Patient {
 		this.personalDetails = personalDetails;
 	}
 
-	public double getAddress() {
+	
+	public String getAddress() {
 		return address;
 	}
 
-	public void setAddress(double address) {
+	public void setAddress(String address) {
 		this.address = address;
 	}
 

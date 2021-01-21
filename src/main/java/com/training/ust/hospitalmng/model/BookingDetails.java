@@ -17,10 +17,25 @@ public class BookingDetails {
 	
 	private String doctorId;
 	
-	private double bookingDateTime;
+	private String bookingDateTime;
 	
-    private double appointmentDateTime;
+    private String appointmentDateTime;
 
+    
+
+    public BookingDetails(){
+    	
+    }
+	public BookingDetails(String bookingId, String patientId, String doctorId, String bookingDateTime,
+			String appointmentDateTime) {
+		super();
+		this.bookingId = bookingId;
+		this.patientId = patientId;
+		this.doctorId = doctorId;
+		this.bookingDateTime = bookingDateTime;
+		this.appointmentDateTime = appointmentDateTime;
+
+	}
 	public String getBookingId() {
 		return bookingId;
 	}
@@ -45,21 +60,22 @@ public class BookingDetails {
 		this.doctorId = doctorId;
 	}
 
-	public double getBookingDateTime() {
+	public String getBookingDateTime() {
 		return bookingDateTime;
 	}
 
-	public void setBookingDateTime(double bookingDateTime) {
-		this.bookingDateTime = bookingDateTime;
-	}
-
-	public double getAppointmentDateTime() {
+	public String getAppointmentDateTime() {
 		return appointmentDateTime;
 	}
 
-	public void setAppointmentDateTime(double appointmentDateTime) {
+	public void setAppointmentDateTime(String appointmentDateTime) {
 		this.appointmentDateTime = appointmentDateTime;
 	}
+
+	public void setBookingDateTime(String bookingDateTime) {
+		this.bookingDateTime = bookingDateTime;
+	}
+
 	
 	
 }
