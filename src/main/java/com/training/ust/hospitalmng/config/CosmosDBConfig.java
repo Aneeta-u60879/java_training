@@ -11,7 +11,7 @@ import com.azure.spring.data.cosmos.config.AbstractCosmosConfiguration;
 import com.azure.spring.data.cosmos.repository.config.EnableReactiveCosmosRepositories;
 
 @Configuration
-@EnableReactiveCosmosRepositories(basePackages = "com.employee.employeemgmt")
+@EnableReactiveCosmosRepositories(basePackages = "com.training.ust.hospitalmng")
 public class CosmosDBConfig extends AbstractCosmosConfiguration {
 
 	@Value("${azure.cosmosdb.uri}")

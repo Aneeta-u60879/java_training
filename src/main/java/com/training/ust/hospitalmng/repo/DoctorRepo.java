@@ -1,6 +1,6 @@
-/*Class Name  : EmployeeRepo
- *Description : EmployeeRepo  of employee class 
- *Date of Creation: 28/11/2020
+/*Class Name  : DoctorRepo
+ *Description : DoctorRepo  of Doctor class 
+ *Date of Creation: 8/01/2021
  */
 package com.training.ust.hospitalmng.repo;
 
@@ -12,13 +12,19 @@ import com.training.ust.hospitalmng.model.Doctor;
 
 import reactor.core.publisher.Flux;
 
+/**
+ * Repository class of Doctor
+ * 
+ * @author 87094
+ *
+ */
 
+@Repository
+public interface DoctorRepo extends ReactiveCosmosRepository<Doctor, String> {
 
-//@Repository
-public interface DoctorRepo extends
-		ReactiveCosmosRepository<Doctor, String> {
+	/*
+	 * Methods for access field in Doctor Repository
+	 */
 
-
-
-	  Flux<Doctor> getDoctorsByDepartment(String dept);
+	Flux<Doctor> getDoctorsByDepartment(String dept);
 }
