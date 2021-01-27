@@ -8,7 +8,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.training.ust.hospitalmng.dataacess.HospitalDAOImpl;
 import com.training.ust.hospitalmng.exception.HospitalMgmtException;
 import com.training.ust.hospitalmng.model.BookingDetails;
@@ -149,6 +148,34 @@ public class HospitalService {
 
 		return appoinmentBooking.block();
 
+	}
+
+	/*
+	 * Method for delete patient
+	 */
+	public Mono<Patient> deletePatient(String patientId) throws HospitalMgmtException {
+		Mono<Patient> response = repo.findById(patientId);
+		if (response.block() == null) {
+			throw new HospitalMgmtException("patient not found");
+		} else {
+			Mono<Patient> deleteResponse = response.flatMap(pat -> repo.delete(pat).then(Mono.just(pat)));
+
+			return deleteResponse;
+		}
+	}
+
+	/*
+	 * Method for delete doctor
+	 */
+	public Mono<Doctor> deleteDoctor(String doctorId) throws HospitalMgmtException {
+		Mono<Doctor> response = repo1.findById(doctorId);
+		if (response.block() == null) {
+			throw new HospitalMgmtException("doctor not found");
+		} else {
+			Mono<Doctor> deleteResponse = response.flatMap(doc -> repo1.delete(doc).then(Mono.just(doc)));
+
+			return deleteResponse;
+		}
 	}
 
 	/*

@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,6 +23,8 @@ import com.training.ust.hospitalmng.model.BookingDetails;
 import com.training.ust.hospitalmng.model.Doctor;
 import com.training.ust.hospitalmng.model.Patient;
 import com.training.ust.hospitalmng.service.HospitalService;
+
+import reactor.core.publisher.Mono;
 
 /**
  * Controller for the CRED operations
@@ -194,6 +197,44 @@ public class HospitalController {
 			return new ResponseEntity<List<Doctor>>(doctor, HttpStatus.OK);
 		} else
 			return new ResponseEntity<List<Doctor>>(doctor, HttpStatus.NO_CONTENT);
+
+	}
+
+	/**
+	 * Method for deleting doctor by doctorId
+	 * 
+	 * @param doctorId
+	 * @return the doctor deleted or bad request
+	 */
+
+	@DeleteMapping(value = "/deleteDoctor/{id}")
+	public ResponseEntity<String> deleteDoctor(@PathVariable("doctorId") String doctorId) {
+		Mono<Doctor> resp = service.deleteDoctor(doctorId);
+		System.out.println("block" + resp.block());
+		if (resp.block() != null) {
+			return new ResponseEntity<String>("deleted", HttpStatus.OK);
+		} else
+
+			return new ResponseEntity<String>("not deleted", HttpStatus.NOT_FOUND);
+
+	}
+
+	/**
+	 * Method for deleting doctor by patientId
+	 * 
+	 * @param patientId
+	 * @return the patient deleted or bad request
+	 */
+
+	@DeleteMapping(value = "/deletePatient/{patientId}")
+	public ResponseEntity<String> deletePatient(@PathVariable("patientId") String patientId) {
+		Mono<Patient> resp = service.deletePatient(patientId);
+		System.out.println("block" + resp.block());
+		if (resp.block() != null) {
+			return new ResponseEntity<String>("deleted", HttpStatus.OK);
+		} else
+
+			return new ResponseEntity<String>("not deleted", HttpStatus.NOT_FOUND);
 
 	}
 
