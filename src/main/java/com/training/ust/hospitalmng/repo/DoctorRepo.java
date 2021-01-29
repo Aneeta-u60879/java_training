@@ -26,5 +26,5 @@ public interface DoctorRepo extends ReactiveCosmosRepository<Doctor, String> {
 	 * Methods for access field in Doctor Repository
 	 */
 
-	Flux<Doctor> getDoctorsByDepartment(String dept);
+	Flux<Doctor> getDoctorsByDept(String dept);
 }
