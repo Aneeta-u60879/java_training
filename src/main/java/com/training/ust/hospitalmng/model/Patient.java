@@ -24,8 +24,6 @@ public class Patient {
 	private String patientId;
 	protected String name;
 
-	private String personalDetails;
-
 	private String address;
 
 	private double age;
